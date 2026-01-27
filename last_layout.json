@@ -1,0 +1,9 @@
+{
+  "map": {
+    "w": 12,
+    "h": 12
+  },
+  "chunk_size": 4,
+  "blocked": [],
+  "placements": []
+}

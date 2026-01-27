@@ -1,0 +1,393 @@
+{
+  "map": {
+    "w": 12,
+    "h": 12
+  },
+  "chunk_size": 4,
+  "items": {
+    "Bus stop": {
+      "category": "Environment",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Mirror": {
+      "category": "Environment",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Guard Rail": {
+      "category": "Environment",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Megabot Base": {
+      "category": "Environment",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Hedgerow": {
+      "category": "Environment",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Yellow Flower": {
+      "category": "Environment",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Red Flower": {
+      "category": "Environment",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Small Vault": {
+      "category": "Environment",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Small Storehouse": {
+      "category": "Environment",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Large Storehouse": {
+      "category": "Environment",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Streetlight": {
+      "category": "Environment",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "waterworks": {
+      "category": "Environment",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "stop light": {
+      "category": "Environment",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Utility pole": {
+      "category": "Environment",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Bush": {
+      "category": "Environment",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Tiny Tree": {
+      "category": "Environment",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Grassy Clump": {
+      "category": "Environment",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Tree Barricade": {
+      "category": "Environment",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Tree": {
+      "category": "Environment",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "House": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Log Cabin": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Hospital": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Motorcycle Store": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Fish Market": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Bike Store": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Police Headquarter": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Bathhouse": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Clothes Store": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Hot spring": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Farm": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Book Store": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Restaurant": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Shrine": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Tent": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Florist": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Bank": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Bakery": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Cafe": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Cafeteria": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Candy Store": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Cake shop": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Car showroom": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Convenience Store": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Department Store": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Drug Store": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Fast-food Outlet": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Greengrocer": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Noodle bar": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Beef Bowl Shop": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Police Station": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Fire Station": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Game Store": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Phone Store": {
+      "category": "Buildings",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Bench": {
+      "category": "Facilities",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Vending Machine": {
+      "category": "Facilities",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Postbox": {
+      "category": "Facilities",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Telephone Box": {
+      "category": "Facilities",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Food Stall": {
+      "category": "Facilities",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Market Stall": {
+      "category": "Facilities",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Park": {
+      "category": "Facilities",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Gourmet Food Market": {
+      "category": "Facilities",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Lottery Stall": {
+      "category": "Facilities",
+      "count": 0,
+      "w": null,
+      "h": null
+    },
+    "Big Tree": {
+      "count": 0,
+      "w": null,
+      "h": null,
+      "category": "Environment"
+    },
+    "Hillock": {
+      "count": 0,
+      "w": null,
+      "h": null,
+      "category": "Environment"
+    }
+  }
+}

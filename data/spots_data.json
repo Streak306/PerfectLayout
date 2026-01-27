@@ -1,0 +1,374 @@
+[
+  {
+    "name": "Comfy Living Spot",
+    "A": [
+      "Bus stop",
+      "Mirror",
+      "Guard Rail"
+    ],
+    "B": [
+      "House",
+      "Log Cabin",
+      "Hospital",
+      "Motorcycle Store",
+      "Fish Market",
+      "Bike Store",
+      "Police Headquarter"
+    ],
+    "buff": {
+      "stat": "Amenity",
+      "percent": 4
+    }
+  },
+  {
+    "name": "Entertainment Spot",
+    "A": [
+      "Megabot Base",
+      "Hedgerow",
+      "Yellow Flower",
+      "Red Flower"
+    ],
+    "B": [
+      "Bathhouse",
+      "Clothes Store",
+      "Hot spring",
+      "Farm",
+      "Book Store",
+      "Restaurant",
+      "Shrine"
+    ],
+    "buff": {
+      "stat": "Fun",
+      "percent": 4
+    }
+  },
+  {
+    "name": "Electricity-guzzling Spot",
+    "A": [
+      "Small Vault",
+      "Small Storehouse",
+      "Large Storehouse",
+      "Streetlight",
+      "waterworks",
+      "stop light",
+      "Utility pole"
+    ],
+    "B": [
+      "Police Station",
+      "Fire Station",
+      "Game Store",
+      "Phone Store"
+    ],
+    "buff": {
+      "stat": "Electricity",
+      "percent": 4
+    }
+  },
+  {
+    "name": "Negative Ion Spot",
+    "A": [
+      "Bush",
+      "Tiny Tree",
+      "Grassy Clump",
+      "Tree Barricade",
+      "Tree",
+      "Big Tree",
+      "Hillock"
+    ],
+    "B": [
+      "Tent",
+      "Florist"
+    ],
+    "buff": {
+      "stat": "Nature",
+      "percent": 4
+    }
+  },
+  {
+    "name": "Residential Spot",
+    "A": [
+      "House",
+      "Log Cabin",
+      "Hospital",
+      "Motorcycle Store",
+      "Fish Market",
+      "Bike Store",
+      "Police Headquarter"
+    ],
+    "B": [
+      "House",
+      "Log Cabin",
+      "Hospital",
+      "Motorcycle Store",
+      "Fish Market",
+      "Bike Store",
+      "Police Headquarter"
+    ],
+    "buff": {
+      "stat": "Amenity",
+      "percent": 2
+    }
+  },
+  {
+    "name": "Play Spot",
+    "A": [
+      "Bathhouse",
+      "Clothes Store",
+      "Hot spring",
+      "Farm",
+      "Book Store",
+      "Restaurant",
+      "Shrine"
+    ],
+    "B": [
+      "Bathhouse",
+      "Clothes Store",
+      "Hot spring",
+      "Farm",
+      "Book Store",
+      "Restaurant",
+      "Shrine"
+    ],
+    "buff": {
+      "stat": "Fun",
+      "percent": 2
+    }
+  },
+  {
+    "name": "Shopping Spot",
+    "A": [
+      "Bank",
+      "Bakery",
+      "Cafe",
+      "Cafeteria",
+      "Candy Store",
+      "Cake shop",
+      "Car showroom",
+      "Convenience Store",
+      "Department Store",
+      "Drug Store",
+      "Fast-food Outlet",
+      "Greengrocer",
+      "Noodle bar",
+      "Beef Bowl Shop"
+    ],
+    "B": [
+      "Bank",
+      "Bakery",
+      "Cafe",
+      "Cafeteria",
+      "Candy Store",
+      "Cake shop",
+      "Car showroom",
+      "Convenience Store",
+      "Department Store",
+      "Drug Store",
+      "Fast-food Outlet",
+      "Greengrocer",
+      "Noodle bar",
+      "Beef Bowl Shop"
+    ],
+    "buff": {
+      "stat": "Sales",
+      "percent": 2
+    }
+  },
+  {
+    "name": "High-Voltage Residential Spot",
+    "A": [
+      "Police Station",
+      "Fire Station",
+      "Game Store",
+      "Phone Store"
+    ],
+    "B": [
+      "Police Station",
+      "Fire Station",
+      "Game Store",
+      "Phone Store"
+    ],
+    "buff": {
+      "stat": "Electricity",
+      "percent": 2
+    }
+  },
+  {
+    "name": "Quiet Spot",
+    "A": [
+      "Tent",
+      "Florist"
+    ],
+    "B": [
+      "Tent",
+      "Florist"
+    ],
+    "buff": {
+      "stat": "Nature",
+      "percent": 2
+    }
+  },
+  {
+    "name": "Amenity Spot",
+    "A": [
+      "Bus stop",
+      "Mirror",
+      "Guard Rail"
+    ],
+    "B": [
+      "Bus stop",
+      "Mirror",
+      "Guard Rail"
+    ],
+    "buff": {
+      "stat": "Amenity",
+      "percent": 2
+    }
+  },
+  {
+    "name": "Fun Spot",
+    "A": [
+      "Megabot Base",
+      "Hedgerow",
+      "Yellow Flower",
+      "Red Flower"
+    ],
+    "B": [
+      "Megabot Base",
+      "Hedgerow",
+      "Yellow Flower",
+      "Red Flower"
+    ],
+    "buff": {
+      "stat": "Fun",
+      "percent": 2
+    }
+  },
+  {
+    "name": "Electricity Spot",
+    "A": [
+      "Small Vault",
+      "Small Storehouse",
+      "Large Storehouse",
+      "Streetlight",
+      "waterworks",
+      "stop light",
+      "Utility pole"
+    ],
+    "B": [
+      "Small Vault",
+      "Small Storehouse",
+      "Large Storehouse",
+      "Streetlight",
+      "waterworks",
+      "stop light",
+      "Utility pole"
+    ],
+    "buff": {
+      "stat": "Electricity",
+      "percent": 2
+    }
+  },
+  {
+    "name": "Nature Spot",
+    "A": [
+      "Bush",
+      "Tiny Tree",
+      "Grassy Clump",
+      "Tree Barricade",
+      "Tree",
+      "Big Tree",
+      "Hillock"
+    ],
+    "B": [
+      "Bush",
+      "Tiny Tree",
+      "Grassy Clump",
+      "Tree Barricade",
+      "Tree",
+      "Big Tree",
+      "Hillock"
+    ],
+    "buff": {
+      "stat": "Nature",
+      "percent": 2
+    }
+  },
+  {
+    "name": "Break Spot",
+    "A": [
+      "Bench"
+    ],
+    "B": [
+      "Vending Machine"
+    ],
+    "buff": {
+      "stat": "Fun",
+      "percent": 5
+    }
+  },
+  {
+    "name": "Meeting Spot",
+    "A": [
+      "Bench"
+    ],
+    "B": [
+      "Park"
+    ],
+    "buff": {
+      "stat": "Fun",
+      "percent": 5
+    }
+  },
+  {
+    "name": "Contact Spot",
+    "A": [
+      "Postbox"
+    ],
+    "B": [
+      "Telephone Box"
+    ],
+    "buff": {
+      "stat": "Sales",
+      "percent": 5
+    }
+  },
+  {
+    "name": "Eating Spot",
+    "A": [
+      "Vending Machine"
+    ],
+    "B": [
+      "Food Stall"
+    ],
+    "buff": {
+      "stat": "Sales",
+      "percent": 5
+    }
+  },
+  {
+    "name": "Festival Spot",
+    "A": [
+      "Market Stall"
+    ],
+    "B": [
+      "Food Stall"
+    ],
+    "buff": {
+      "stat": "Sales",
+      "percent": 5
+    }
+  },
+  {
+    "name": "Plaza Spot",
+    "A": [
+      "Gourmet Food Market"
+    ],
+    "B": [
+      "Lottery Stall"
+    ],
+    "buff": {
+      "stat": "Electricity",
+      "percent": 5
+    }
+  }
+]

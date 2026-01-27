@@ -1,0 +1,18 @@
+Legends of Heropolis DX - Layout Planner (v6)
+
+IMPORTANTE: extraia o .zip inteiro para uma pasta (nao rode dentro do zip).
+
+COMO ABRIR
+1) Duplo clique em: run_gui.bat  (mais confiavel; mostra erros e cria logs)
+2) Se ja estiver funcionando e voce quiser sem janela preta, use:
+   Start GUI (no console).vbs
+
+SE ABRIR CMD E FECHAR RAPIDO
+- Isso acontece quando o Windows bloqueia o python/script, ou quando o Python/Tkinter nao esta instalado.
+- Rode o run_gui.bat e veja a mensagem.
+
+ARQUIVOS DE LOG
+- logs\app_stderr.txt
+- logs\launcher_log.txt
+
+Se algo falhar, me envie o conteudo desses dois arquivos.

@@ -1,0 +1,20 @@
+LEIA ANTES (Windows)
+
+Se ao abrir o app aparece só um CMD rapidinho e fecha, quase sempre é porque o seu Windows
+NÃO tem Python instalado de verdade — só o "atalho" da Microsoft Store.
+
+Como checar:
+  - Abra o arquivo run_gui.bat (ele mostra o erro e não fecha)
+  - Veja logs\launcher_log.txt
+
+Como resolver:
+1) RECOMENDADO: instalar Python do site python.org
+   - Baixe Python 3.11 ou superior
+   - Marque "Add python.exe to PATH"
+   - Conclua a instalação e reinicie o app.
+
+2) OU desativar o alias do Windows:
+   Configurações > Apps > Configurações avançadas > App execution aliases
+   Desligue: python.exe e python3.exe
+
+Depois, abra o app novamente.
