@@ -1,1 +1,880 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PerfectLayout - Legends of Heropolis DX</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      --bg: #f5f6fb;
+      --card: #ffffff;
+      --border: #dfe3ec;
+      --text: #1f2933;
+      --muted: #52606d;
+      --accent: #316fea;
+      --accent-soft: #e3edff;
+      --danger: #c53030;
+      --success: #2f855a;
+    }
 
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    header {
+      padding: 24px 32px 12px;
+      background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+      color: #fff;
+    }
+
+    header h1 {
+      margin: 0 0 6px;
+      font-size: 28px;
+    }
+
+    header p {
+      margin: 0;
+      opacity: 0.9;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 24px 32px 40px;
+    }
+
+    @media (min-width: 1100px) {
+      main {
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: start;
+      }
+    }
+
+    section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+    }
+
+    section h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--muted);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 14px;
+    }
+
+    textarea {
+      min-height: 60px;
+    }
+
+    button {
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    button.secondary {
+      background: #e2e8f0;
+      color: #1a202c;
+    }
+
+    button.danger {
+      background: var(--danger);
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .info {
+      background: var(--accent-soft);
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #1a365d;
+    }
+
+    .error {
+      color: var(--danger);
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    .success {
+      color: var(--success);
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th, td {
+      border-bottom: 1px solid var(--border);
+      padding: 6px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f8fafc;
+      color: var(--muted);
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      background: #edf2f7;
+      font-size: 12px;
+      color: #4a5568;
+      margin-right: 4px;
+    }
+
+    .grid-preview {
+      display: grid;
+      gap: 2px;
+      margin-top: 12px;
+      background: #cbd5f5;
+      padding: 6px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+
+    .cell {
+      width: 26px;
+      height: 26px;
+      background: #fff;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #1a202c;
+      border: 1px solid #e2e8f0;
+    }
+
+    .cell.blocked {
+      background: #2d3748;
+      color: #fff;
+    }
+
+    .cell.occupied {
+      background: #90cdf4;
+      border-color: #63b3ed;
+      color: #1a202c;
+      font-weight: 600;
+    }
+
+    .pair-list {
+      max-height: 160px;
+      overflow-y: auto;
+      margin-top: 8px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px;
+      background: #f8fafc;
+    }
+
+    .pair-item {
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>PerfectLayout DX</h1>
+    <p>Criador + calculador + otimizador de layout para Legends of Heropolis DX, com regras fechadas.</p>
+  </header>
+
+  <main>
+    <div>
+      <section>
+        <h2>1) Mapa (chunks e bloqueios)</h2>
+        <div class="grid-2">
+          <div>
+            <label for="chunksX">ChunksX (largura)</label>
+            <input id="chunksX" type="number" min="1" value="2" />
+          </div>
+          <div>
+            <label for="chunksY">ChunksY (altura)</label>
+            <input id="chunksY" type="number" min="1" value="2" />
+          </div>
+          <div>
+            <label for="blockedCells">Bloqueios 1x1 (x,y; x,y)</label>
+            <textarea id="blockedCells" placeholder="Ex: 0,0; 3,2; 5,6"></textarea>
+          </div>
+          <div>
+            <label for="weights">Pesos (wA,wF,wS,wE,wN)</label>
+            <input id="weights" type="text" placeholder="Opcional, ex: 1,1,1,1,1" />
+          </div>
+        </div>
+        <div class="actions">
+          <button id="applyMap">Aplicar mapa</button>
+        </div>
+        <p class="info">Regras rígidas: construções não atravessam chunk 4x4 e só ocupam células livres.</p>
+        <p id="mapStatus" class="success"></p>
+      </section>
+
+      <section>
+        <h2>2) Cadastro de construções</h2>
+        <div class="grid-2">
+          <div>
+            <label for="buildName">Nome/ID</label>
+            <input id="buildName" type="text" placeholder="Ex: Estação Energia" />
+          </div>
+          <div>
+            <label for="buildSize">Tamanho (LxA)</label>
+            <input id="buildSize" type="text" placeholder="Ex: 2x3" />
+          </div>
+          <div>
+            <label for="buildQty">Quantidade</label>
+            <input id="buildQty" type="number" min="1" value="1" />
+          </div>
+          <div>
+            <label for="buildBuff">BuffBaseTotal</label>
+            <input id="buildBuff" type="number" min="0" value="100" />
+          </div>
+          <div>
+            <label for="pctAmenity">%Amenity</label>
+            <input id="pctAmenity" type="number" step="0.01" value="0.2" />
+          </div>
+          <div>
+            <label for="pctFun">%Fun</label>
+            <input id="pctFun" type="number" step="0.01" value="0.2" />
+          </div>
+          <div>
+            <label for="pctSales">%Sales</label>
+            <input id="pctSales" type="number" step="0.01" value="0.2" />
+          </div>
+          <div>
+            <label for="pctElectricity">%Electricity</label>
+            <input id="pctElectricity" type="number" step="0.01" value="0.2" />
+          </div>
+          <div>
+            <label for="pctNature">%Nature</label>
+            <input id="pctNature" type="number" step="0.01" value="0.2" />
+          </div>
+        </div>
+        <div class="actions">
+          <button id="addBuilding">Adicionar construção</button>
+          <button id="clearBuildings" class="secondary">Limpar lista</button>
+        </div>
+        <p id="buildingError" class="error"></p>
+        <table id="buildingTable">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Tamanho</th>
+              <th>Qtd</th>
+              <th>Base</th>
+              <th>Percentuais</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>3) Interações (A ↔ B)</h2>
+        <div class="grid-2">
+          <div>
+            <label for="interactionName">Nome da interação</label>
+            <input id="interactionName" type="text" placeholder="Ex: Energia x Nature 4%" />
+          </div>
+          <div>
+            <label for="interactionPct">Percentual (p%)</label>
+            <input id="interactionPct" type="number" step="0.01" placeholder="Ex: 0.04" />
+          </div>
+          <div>
+            <label for="blockA">Bloco A</label>
+            <select id="blockA" multiple></select>
+          </div>
+          <div>
+            <label for="blockB">Bloco B</label>
+            <select id="blockB" multiple></select>
+          </div>
+        </div>
+        <div class="actions">
+          <button id="addInteraction">Criar interação</button>
+          <button id="clearInteractions" class="secondary">Limpar interações</button>
+        </div>
+        <p id="interactionError" class="error"></p>
+        <table id="interactionTable">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>p%</th>
+              <th>Bloco A</th>
+              <th>Bloco B</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </div>
+
+    <div>
+      <section>
+        <h2>4) Otimização + Cálculo</h2>
+        <div class="info">
+          O otimizador usa heurística gulosa (maiores construções primeiro), respeitando chunk 4x4, bloqueios e quantidades.
+        </div>
+        <div class="actions">
+          <button id="runOptimizer">Gerar layout + calcular buffs</button>
+          <button id="clearLayout" class="secondary">Limpar layout</button>
+        </div>
+        <p id="layoutError" class="error"></p>
+        <div id="layoutResults"></div>
+        <div id="gridPreview" class="grid-preview"></div>
+      </section>
+
+      <section>
+        <h2>5) Resumo de bônus</h2>
+        <div id="bonusSummary" class="pair-list"></div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const state = {
+      chunksX: 2,
+      chunksY: 2,
+      blocked: new Set(),
+      buildings: [],
+      interactions: [],
+      layout: [],
+    };
+
+    const el = (id) => document.getElementById(id);
+
+    const mapStatus = el("mapStatus");
+    const buildingError = el("buildingError");
+    const interactionError = el("interactionError");
+    const layoutError = el("layoutError");
+    const buildingTableBody = el("buildingTable").querySelector("tbody");
+    const interactionTableBody = el("interactionTable").querySelector("tbody");
+    const gridPreview = el("gridPreview");
+    const layoutResults = el("layoutResults");
+    const bonusSummary = el("bonusSummary");
+
+    const parsePercent = (value) => {
+      const num = Number(value);
+      return Number.isFinite(num) ? num : NaN;
+    };
+
+    const normalizePercentages = (values) => {
+      const sum = values.reduce((acc, v) => acc + v, 0);
+      if (Math.abs(sum - 1) < 0.001) {
+        return { values, sum };
+      }
+      if (Math.abs(sum - 100) < 0.1) {
+        return { values: values.map((v) => v / 100), sum };
+      }
+      return null;
+    };
+
+    const updateMap = () => {
+      const chunksX = Number(el("chunksX").value);
+      const chunksY = Number(el("chunksY").value);
+      if (!Number.isInteger(chunksX) || chunksX < 1 || !Number.isInteger(chunksY) || chunksY < 1) {
+        mapStatus.textContent = "Chunks devem ser inteiros >= 1.";
+        mapStatus.className = "error";
+        return;
+      }
+      state.chunksX = chunksX;
+      state.chunksY = chunksY;
+      const blockedRaw = el("blockedCells").value.trim();
+      const blocked = new Set();
+      if (blockedRaw) {
+        blockedRaw.split(";").forEach((pair) => {
+          const [xStr, yStr] = pair.split(",").map((p) => p.trim());
+          const x = Number(xStr);
+          const y = Number(yStr);
+          if (Number.isInteger(x) && Number.isInteger(y) && x >= 0 && y >= 0) {
+            blocked.add(`${x},${y}`);
+          }
+        });
+      }
+      state.blocked = blocked;
+      mapStatus.textContent = `Mapa aplicado: ${chunksX}x${chunksY} chunks (W=${chunksX * 4}, H=${chunksY * 4}).`;
+      mapStatus.className = "success";
+      renderGrid();
+    };
+
+    const renderBuildings = () => {
+      buildingTableBody.innerHTML = "";
+      const options = state.buildings.map((b) => `<option value="${b.id}">${b.name}</option>`).join("");
+      el("blockA").innerHTML = options;
+      el("blockB").innerHTML = options;
+      state.buildings.forEach((b) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${b.name}</td>
+          <td>${b.width}x${b.height}</td>
+          <td>${b.quantity}</td>
+          <td>${b.buffBaseTotal}</td>
+          <td>
+            <span class="pill">A ${Math.round(b.percentages.amenity * 100)}%</span>
+            <span class="pill">F ${Math.round(b.percentages.fun * 100)}%</span>
+            <span class="pill">S ${Math.round(b.percentages.sales * 100)}%</span>
+            <span class="pill">E ${Math.round(b.percentages.electricity * 100)}%</span>
+            <span class="pill">N ${Math.round(b.percentages.nature * 100)}%</span>
+          </td>
+        `;
+        buildingTableBody.appendChild(row);
+      });
+    };
+
+    const renderInteractions = () => {
+      interactionTableBody.innerHTML = "";
+      state.interactions.forEach((i) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${i.name}</td>
+          <td>${(i.percent * 100).toFixed(2)}%</td>
+          <td>${i.blockA.map((id) => state.buildings.find((b) => b.id === id)?.name || id).join(", ")}</td>
+          <td>${i.blockB.map((id) => state.buildings.find((b) => b.id === id)?.name || id).join(", ")}</td>
+        `;
+        interactionTableBody.appendChild(row);
+      });
+    };
+
+    const renderGrid = () => {
+      const width = state.chunksX * 4;
+      const height = state.chunksY * 4;
+      gridPreview.style.gridTemplateColumns = `repeat(${width}, 26px)`;
+      gridPreview.innerHTML = "";
+      const placementMap = new Map();
+      state.layout.forEach((pl) => {
+        for (let dx = 0; dx < pl.width; dx++) {
+          for (let dy = 0; dy < pl.height; dy++) {
+            placementMap.set(`${pl.x + dx},${pl.y + dy}`, pl);
+          }
+        }
+      });
+      for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+          const cell = document.createElement("div");
+          cell.className = "cell";
+          const key = `${x},${y}`;
+          if (state.blocked.has(key)) {
+            cell.classList.add("blocked");
+            cell.textContent = "X";
+          } else if (placementMap.has(key)) {
+            cell.classList.add("occupied");
+            cell.textContent = placementMap.get(key).label;
+          }
+          gridPreview.appendChild(cell);
+        }
+      }
+    };
+
+    const addBuilding = () => {
+      buildingError.textContent = "";
+      const name = el("buildName").value.trim();
+      const size = el("buildSize").value.trim().toLowerCase();
+      const quantity = Number(el("buildQty").value);
+      const buffBaseTotal = Number(el("buildBuff").value);
+      if (!name) {
+        buildingError.textContent = "Informe o nome/ID da construção.";
+        return;
+      }
+      const sizeMatch = size.match(/^(\d+)x(\d+)$/);
+      if (!sizeMatch) {
+        buildingError.textContent = "Tamanho inválido. Use LxA (ex: 2x3).";
+        return;
+      }
+      const width = Number(sizeMatch[1]);
+      const height = Number(sizeMatch[2]);
+      if (width < 1 || width > 4 || height < 1 || height > 4) {
+        buildingError.textContent = "Tamanho permitido: 1x1 até 4x4.";
+        return;
+      }
+      if (!Number.isInteger(quantity) || quantity < 1) {
+        buildingError.textContent = "Quantidade deve ser >= 1.";
+        return;
+      }
+      if (!Number.isFinite(buffBaseTotal) || buffBaseTotal < 0) {
+        buildingError.textContent = "BuffBaseTotal deve ser >= 0.";
+        return;
+      }
+      const percents = [
+        parsePercent(el("pctAmenity").value),
+        parsePercent(el("pctFun").value),
+        parsePercent(el("pctSales").value),
+        parsePercent(el("pctElectricity").value),
+        parsePercent(el("pctNature").value),
+      ];
+      if (percents.some((p) => !Number.isFinite(p) || p < 0)) {
+        buildingError.textContent = "Percentuais devem ser números válidos.";
+        return;
+      }
+      const normalized = normalizePercentages(percents);
+      if (!normalized) {
+        buildingError.textContent = "Percentuais devem somar 1.0 ou 100%.";
+        return;
+      }
+      const [amenity, fun, sales, electricity, nature] = normalized.values;
+      state.buildings.push({
+        id: crypto.randomUUID(),
+        name,
+        width,
+        height,
+        quantity,
+        buffBaseTotal,
+        percentages: { amenity, fun, sales, electricity, nature },
+      });
+      renderBuildings();
+    };
+
+    const addInteraction = () => {
+      interactionError.textContent = "";
+      const name = el("interactionName").value.trim();
+      const percentRaw = Number(el("interactionPct").value);
+      if (!name) {
+        interactionError.textContent = "Informe o nome da interação.";
+        return;
+      }
+      if (!Number.isFinite(percentRaw) || percentRaw <= 0) {
+        interactionError.textContent = "Percentual deve ser um número positivo (ex: 0.04).";
+        return;
+      }
+      const blockA = Array.from(el("blockA").selectedOptions).map((o) => o.value);
+      const blockB = Array.from(el("blockB").selectedOptions).map((o) => o.value);
+      const overlap = blockA.filter((id) => blockB.includes(id));
+      if (overlap.length) {
+        interactionError.textContent = "Uma construção não pode estar em A e B na mesma interação.";
+        return;
+      }
+      state.interactions.push({
+        id: crypto.randomUUID(),
+        name,
+        percent: percentRaw,
+        blockA,
+        blockB,
+      });
+      renderInteractions();
+    };
+
+    const parseWeights = () => {
+      const raw = el("weights").value.trim();
+      if (!raw) return { amenity: 1, fun: 1, sales: 1, electricity: 1, nature: 1 };
+      const parts = raw.split(",").map((p) => Number(p.trim()));
+      if (parts.length !== 5 || parts.some((p) => !Number.isFinite(p))) {
+        return null;
+      }
+      return {
+        amenity: parts[0],
+        fun: parts[1],
+        sales: parts[2],
+        electricity: parts[3],
+        nature: parts[4],
+      };
+    };
+
+    const canPlace = (grid, width, height, x, y, chunkX, chunkY) => {
+      const maxX = (chunkX + 1) * 4;
+      const maxY = (chunkY + 1) * 4;
+      if (x + width > maxX || y + height > maxY) {
+        return false;
+      }
+      for (let dx = 0; dx < width; dx++) {
+        for (let dy = 0; dy < height; dy++) {
+          if (grid[`${x + dx},${y + dy}`]) return false;
+          if (state.blocked.has(`${x + dx},${y + dy}`)) return false;
+        }
+      }
+      return true;
+    };
+
+    const placeBuilding = (grid, placement) => {
+      for (let dx = 0; dx < placement.width; dx++) {
+        for (let dy = 0; dy < placement.height; dy++) {
+          grid[`${placement.x + dx},${placement.y + dy}`] = placement.id;
+        }
+      }
+    };
+
+    const runOptimizer = () => {
+      layoutError.textContent = "";
+      if (!state.buildings.length) {
+        layoutError.textContent = "Cadastre ao menos uma construção.";
+        return;
+      }
+      const weights = parseWeights();
+      if (!weights) {
+        layoutError.textContent = "Pesos inválidos. Use cinco números separados por vírgula.";
+        return;
+      }
+      const width = state.chunksX * 4;
+      const height = state.chunksY * 4;
+      const grid = {};
+      const layout = [];
+      const sortedBuildings = [...state.buildings].sort((a, b) => (b.width * b.height) - (a.width * a.height));
+      sortedBuildings.forEach((b) => {
+        let remaining = b.quantity;
+        for (let chunkY = 0; chunkY < state.chunksY; chunkY++) {
+          for (let chunkX = 0; chunkX < state.chunksX; chunkX++) {
+            for (let y = chunkY * 4; y < (chunkY + 1) * 4; y++) {
+              for (let x = chunkX * 4; x < (chunkX + 1) * 4; x++) {
+                if (remaining <= 0) return;
+                if (canPlace(grid, b.width, b.height, x, y, chunkX, chunkY)) {
+                  const placement = {
+                    id: crypto.randomUUID(),
+                    typeId: b.id,
+                    label: b.name[0].toUpperCase(),
+                    x,
+                    y,
+                    width: b.width,
+                    height: b.height,
+                    chunkX,
+                    chunkY,
+                  };
+                  placeBuilding(grid, placement);
+                  layout.push(placement);
+                  remaining -= 1;
+                }
+              }
+            }
+          }
+        }
+        if (remaining > 0) {
+          layoutError.textContent += `Não foi possível posicionar ${remaining} de ${b.name}. `;
+        }
+      });
+
+      state.layout = layout;
+      renderGrid();
+      const results = calculateBuffs(layout, weights);
+      renderResults(results);
+    };
+
+    const calculateBuffs = (layout, weights) => {
+      const placementById = new Map(layout.map((pl) => [pl.id, pl]));
+      const occupancy = new Map();
+      layout.forEach((pl) => {
+        for (let dx = 0; dx < pl.width; dx++) {
+          for (let dy = 0; dy < pl.height; dy++) {
+            occupancy.set(`${pl.x + dx},${pl.y + dy}`, pl.id);
+          }
+        }
+      });
+      const pairKeys = new Set();
+      const pairs = [];
+      const dirs = [
+        [-1, -1], [0, -1], [1, -1],
+        [-1, 0], [1, 0],
+        [-1, 1], [0, 1], [1, 1],
+      ];
+      occupancy.forEach((id, key) => {
+        const [xStr, yStr] = key.split(",");
+        const x = Number(xStr);
+        const y = Number(yStr);
+        dirs.forEach(([dx, dy]) => {
+          const neighborId = occupancy.get(`${x + dx},${y + dy}`);
+          if (neighborId && neighborId !== id) {
+            const pairKey = [id, neighborId].sort().join("-");
+            if (!pairKeys.has(pairKey)) {
+              pairKeys.add(pairKey);
+              pairs.push([id, neighborId]);
+            }
+          }
+        });
+      });
+
+      const bonusMap = new Map(layout.map((pl) => [pl.id, 0]));
+      const pairSummary = [];
+      pairs.forEach(([idA, idB]) => {
+        const plA = placementById.get(idA);
+        const plB = placementById.get(idB);
+        const typeA = state.buildings.find((b) => b.id === plA.typeId);
+        const typeB = state.buildings.find((b) => b.id === plB.typeId);
+        let maxPercent = 0;
+        let maxName = "";
+        state.interactions.forEach((inter) => {
+          const inA = inter.blockA.includes(typeA.id) && inter.blockB.includes(typeB.id);
+          const inB = inter.blockA.includes(typeB.id) && inter.blockB.includes(typeA.id);
+          if (inA || inB) {
+            if (inter.percent > maxPercent) {
+              maxPercent = inter.percent;
+              maxName = inter.name;
+            }
+          }
+        });
+        if (maxPercent > 0) {
+          bonusMap.set(idA, bonusMap.get(idA) + maxPercent);
+          bonusMap.set(idB, bonusMap.get(idB) + maxPercent);
+          pairSummary.push({
+            a: typeA.name,
+            b: typeB.name,
+            percent: maxPercent,
+            interaction: maxName,
+            posA: `(${plA.x},${plA.y})`,
+            posB: `(${plB.x},${plB.y})`,
+          });
+        }
+      });
+
+      let totalAmenity = 0;
+      let totalFun = 0;
+      let totalSales = 0;
+      let totalElectricity = 0;
+      let totalNature = 0;
+      const placementResults = layout.map((pl) => {
+        const type = state.buildings.find((b) => b.id === pl.typeId);
+        const bonus = bonusMap.get(pl.id) || 0;
+        const baseAmenity = type.buffBaseTotal * type.percentages.amenity;
+        const baseFun = type.buffBaseTotal * type.percentages.fun;
+        const baseSales = type.buffBaseTotal * type.percentages.sales;
+        const baseElectricity = type.buffBaseTotal * type.percentages.electricity;
+        const baseNature = type.buffBaseTotal * type.percentages.nature;
+        const finalAmenity = baseAmenity * (1 + bonus);
+        const finalFun = baseFun * (1 + bonus);
+        const finalSales = baseSales * (1 + bonus);
+        const finalElectricity = baseElectricity * (1 + bonus);
+        const finalNature = baseNature * (1 + bonus);
+        totalAmenity += finalAmenity;
+        totalFun += finalFun;
+        totalSales += finalSales;
+        totalElectricity += finalElectricity;
+        totalNature += finalNature;
+        return {
+          placement: pl,
+          type,
+          bonus,
+          finalAmenity,
+          finalFun,
+          finalSales,
+          finalElectricity,
+          finalNature,
+        };
+      });
+
+      const score =
+        totalAmenity * weights.amenity +
+        totalFun * weights.fun +
+        totalSales * weights.sales +
+        totalElectricity * weights.electricity +
+        totalNature * weights.nature;
+
+      return {
+        placementResults,
+        totals: { totalAmenity, totalFun, totalSales, totalElectricity, totalNature },
+        score,
+        pairSummary: pairSummary.sort((a, b) => b.percent - a.percent),
+      };
+    };
+
+    const renderResults = (results) => {
+      if (!results) return;
+      const { placementResults, totals, score, pairSummary } = results;
+      layoutResults.innerHTML = `
+        <h3>Posicionamento final</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Construção</th>
+              <th>Posição (x,y)</th>
+              <th>Tamanho</th>
+              <th>Chunk</th>
+              <th>Bônus</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${placementResults.map((res) => `
+              <tr>
+                <td>${res.type.name}</td>
+                <td>(${res.placement.x}, ${res.placement.y})</td>
+                <td>${res.placement.width}x${res.placement.height}</td>
+                <td>${res.placement.chunkX},${res.placement.chunkY}</td>
+                <td>${(res.bonus * 100).toFixed(2)}%</td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+        <h3>Totais finais</h3>
+        <p><strong>Amenity:</strong> ${totals.totalAmenity.toFixed(2)}</p>
+        <p><strong>Fun:</strong> ${totals.totalFun.toFixed(2)}</p>
+        <p><strong>Sales:</strong> ${totals.totalSales.toFixed(2)}</p>
+        <p><strong>Electricity:</strong> ${totals.totalElectricity.toFixed(2)}</p>
+        <p><strong>Nature:</strong> ${totals.totalNature.toFixed(2)}</p>
+        <p><strong>Score final:</strong> ${score.toFixed(2)}</p>
+      `;
+
+      bonusSummary.innerHTML = pairSummary.length
+        ? pairSummary.map((pair) => `
+            <div class="pair-item">
+              <strong>${(pair.percent * 100).toFixed(2)}%</strong> — ${pair.a} ${pair.posA} ↔ ${pair.b} ${pair.posB}
+              ${pair.interaction ? `(${pair.interaction})` : ""}
+            </div>
+          `).join("")
+        : "Nenhuma vizinhança com bônus registrada.";
+    };
+
+    el("applyMap").addEventListener("click", updateMap);
+    el("addBuilding").addEventListener("click", addBuilding);
+    el("clearBuildings").addEventListener("click", () => {
+      state.buildings = [];
+      renderBuildings();
+    });
+    el("addInteraction").addEventListener("click", addInteraction);
+    el("clearInteractions").addEventListener("click", () => {
+      state.interactions = [];
+      renderInteractions();
+    });
+    el("runOptimizer").addEventListener("click", runOptimizer);
+    el("clearLayout").addEventListener("click", () => {
+      state.layout = [];
+      layoutResults.innerHTML = "";
+      bonusSummary.innerHTML = "";
+      renderGrid();
+    });
+
+    updateMap();
+  </script>
+</body>
+</html>
